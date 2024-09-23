@@ -1,0 +1,55 @@
+import javax.swing.JOptionPane;
+import java.util.LinkedList;
+
+public class Main {
+
+	public static void main(String[] args) {
+		LinkedList<String> recetas = new LinkedList<>();
+		LinkedList<String> ingredientes = new LinkedList<>();
+        int continuar=0;
+        String[] Opciones = {
+        	"Si", "No"	
+        };
+        int opciones = 0;
+        String[] Opcs = {
+        	"ingresar recetas", "buscar recetas", "salir"	
+        };
+            do {
+            	opciones = JOptionPane.showOptionDialog(null, "Que quiere hacer?", null, 0, 0, null, Opcs, Opcs[0]);
+                switch (opciones) {
+                case 0:
+                	do {
+                        String receta = JOptionPane.showInputDialog("Ingrese el nombre de la receta");
+                        if (receta != null) {
+                            recetas.add(receta);
+                        }
+                        String ingrediente = JOptionPane.showInputDialog("Ingrese ingredientes separados por coma");
+                        if (ingrediente != null) {
+                        	ingredientes.add(ingrediente);
+                        }
+                        
+                        JOptionPane.showMessageDialog(null, "- receta: " + receta + "\n ingredientes: " + ingrediente + "\n ");
+                        continuar = JOptionPane.showOptionDialog(null, "Quiere agregar otra receta?", null, 0, 0, null, Opciones, Opciones[0]);
+                    } while (continuar!= 1);
+                	String todasLasRecetas = "Recetas ingresadas:\n";
+                    for (String receta : recetas) {
+                        todasLasRecetas += "- " + receta + "\n"; 
+                    }
+
+                    JOptionPane.showMessageDialog(null, todasLasRecetas);
+
+
+                    
+                	break;
+                case 1:
+                	
+                	break;
+                case 2:
+                	JOptionPane.showMessageDialog(null, "Adios");
+                	break;
+                }
+            }while (opciones != 2);
+    
+    }
+	
+}
